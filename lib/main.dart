@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/ui/tracks_list_screen.dart';
+import 'package:mybackingtracks/ui/home_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +8,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
-      home: BackingTracksListScreen(),
+      home: HomeScreen(),
     );
   }
 }

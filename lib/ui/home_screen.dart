@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mybackingtracks/ui/add_record_widget.dart';
 import 'package:mybackingtracks/ui/app_colors.dart';
+import 'package:mybackingtracks/ui/tracks/my_tracks_list_screen.dart';
+import 'package:mybackingtracks/ui/wishlist/wish_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +15,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedPageIndex = 0;
 
+  final List<AddRecordStatefulWidget> _pages = [
+    MyTracksListScreen(),
+    WishListScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Color(AppColors.primaryDarkColor),
         //decoration: _createGradientWindowBackground(),
         child: Center(
-          child: Container(),
+          child: _pages[_selectedPageIndex],
         ),
       ),
       bottomNavigationBar: _createBottomNavigationBar(),
@@ -29,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _createAppBar() {
     return AppBar(
-      elevation: 0,
+      elevation: 1,
       backgroundColor: Color(AppColors.primaryDarkColor),
       title: Text(
         "My BackingTracks",
@@ -37,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           fontSize: 25,
           // fontStyle: FontStyle.italic,
           //color: Color(AppColors.appBarPrimaryColor),
-          color: Colors.deepOrange[200],
+          color: Colors.deepOrange[400],
           fontWeight: FontWeight.w600,
           letterSpacing: 0.8
         ),
@@ -49,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Icons.add, 
             color: Color(AppColors.appBarActionColor)
           ),
-          onPressed: () {},
+          onPressed: _onAddRecordClick,
         )
       ],
     );
@@ -93,9 +101,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _onPageSelected(int index) {
+  _onPageSelected(int index) {
     setState(() {
       _selectedPageIndex = index;
     });
+  }
+
+  _onAddRecordClick() {
+    _pages[_selectedPageIndex].addRecord();
   }
 }

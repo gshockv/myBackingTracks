@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mybackingtracks/ui/add_record_widget.dart';
-import 'package:mybackingtracks/ui/app_colors.dart';
 import 'package:mybackingtracks/ui/tracks/my_tracks_list_screen.dart';
 import 'package:mybackingtracks/ui/wishlist/wish_list_screen.dart';
+
+import 'utils/ui_utils.dart';
+import 'utils/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: _createAppBar(),
       body: Container(
-        color: Color(AppColors.primaryDarkColor),
-        //decoration: _createGradientWindowBackground(),
+        //color: Color(AppColors.primaryDarkColor),
+        decoration: UiUtils.createDarkGradientBackground(),
         child: Center(
           child: _pages[_selectedPageIndex],
         ),
@@ -39,16 +41,31 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppBar(
       elevation: 1,
       backgroundColor: Color(AppColors.primaryDarkColor),
-      title: Text(
-        "My BackingTracks",
-        style: GoogleFonts.raleway(          
-          fontSize: 25,
-          // fontStyle: FontStyle.italic,
-          //color: Color(AppColors.appBarPrimaryColor),
-          color: Colors.deepOrange[400],
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.8
-        ),
+      title: RichText(
+        text: TextSpan(
+          text: "My",
+          style: GoogleFonts.raleway(
+              fontSize: 25,
+              //fontStyle: FontStyle.italic,
+              //color: Color(AppColors.appBarPrimaryColor),
+              color: Colors.deepOrange[600],
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.8
+          ),
+          children: [
+            TextSpan(
+              text: " BackingTracks",
+              style: GoogleFonts.raleway(
+                  fontSize: 25,
+                  //fontStyle: FontStyle.italic,
+                  //color: Color(AppColors.appBarPrimaryColor),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.8
+              ),
+            )
+          ]
+        )
       ),
       actions: <Widget>[
         IconButton(
@@ -63,36 +80,23 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Decoration _createGradientWindowBackground() {
-    return BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        stops: [0.5, 1.0],
-        colors: [
-          Color(AppColors.primaryDarkColor),
-          Color(AppColors.primaryLightColor)
-        ]
-      )
-    );
-  }
-
   Widget _createBottomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: _selectedPageIndex,
 
       backgroundColor: Color(AppColors.primaryLightColor),
-      selectedItemColor: Colors.deepOrange[400],
+      selectedItemColor: Colors.deepOrange[600],
       unselectedItemColor: Colors.white,
-      iconSize: 38,
-      elevation: 12,
+      
+      iconSize: 32,
+      //elevation: 12,
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.art_track),
+          icon: Icon(Icons.tap_and_play),
           title: Text("My Tracks")
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.widgets),
+          icon: Icon(Icons.playlist_add_check),
           title: Text("Wish List")
         )
       ],

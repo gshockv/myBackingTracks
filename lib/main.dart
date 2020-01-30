@@ -1,18 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/ui/home_screen.dart';
+import 'package:flutter/services.dart';
+
+import 'ui/home_screen.dart';
+import 'ui/utils/app_colors.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
 
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]);
+
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Color(AppColors.primaryDarkColor)
+      )
+    );
+
+    return MaterialApp(
+      title: 'My BackingTracks',
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData.dark(),
+
+      // theme: ThemeData(
+      //   primarySwatch: Colors.deepPurple,
+      // ),
+      home: SafeArea(
+          child: HomeScreen()
       ),
-      home: HomeScreen(),
     );
   }
 }

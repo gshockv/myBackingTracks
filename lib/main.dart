@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
+import 'package:mybackingtracks/data/provider/mytracks_provider.dart';
+import 'package:mybackingtracks/data/provider/wishlist_provider.dart';
 
 import 'ui/home_screen.dart';
 import 'ui/utils/app_colors.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(builder: (context) => MyTracksProvider()),
+      ChangeNotifierProvider(builder: (context) => WishListProvider())
+    ],
+    child: MyBackingTracksApp()
+  )
+);
 
-class MyApp extends StatelessWidget {
+class MyBackingTracksApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
@@ -24,12 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My BackingTracks',
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData.dark(),
-
-      // theme: ThemeData(
-      //   primarySwatch: Colors.deepPurple,
-      // ),
       home: SafeArea(
           child: HomeScreen()
       ),

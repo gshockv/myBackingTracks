@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mybackingtracks/ui/add_record_widget.dart';
+import 'package:mybackingtracks/ui/add_record_mixin.dart';
 import 'package:mybackingtracks/ui/tracks/my_tracks_list_screen.dart';
 import 'package:mybackingtracks/ui/wishlist/wish_list_screen.dart';
 
-import 'utils/ui_utils.dart';
 import 'utils/app_colors.dart';
+import 'utils/ui_utils.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedPageIndex = 0;
 
-  final List<AddRecordStatefulWidget> _pages = [
+  final List<CanAddNewRecord> _pages = [
     MyTracksListScreen(),
     WishListScreen()
   ];

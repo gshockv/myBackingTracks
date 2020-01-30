@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/ui/add_record_widget.dart';
+import 'package:mybackingtracks/ui/add_record_mixin.dart';
 
-class WishListScreen extends AddRecordStatefulWidget {
+class WishListScreen extends StatefulWidget with CanAddNewRecord {
   @override
   State<StatefulWidget> createState() {
     return _WishListScreenState();

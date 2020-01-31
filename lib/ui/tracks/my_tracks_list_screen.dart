@@ -8,7 +8,7 @@ class MyTracksListScreen extends StatefulWidget with CanAddNewRecord {
   }
 
   @override
-  void addRecord() {
+  void addRecord(BuildContext context) {
     print("Add new backing track record...");
   }
 }

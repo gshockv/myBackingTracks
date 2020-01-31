@@ -11,24 +11,19 @@ dependencies:
     sdk: flutter
   sqflite:
   path:
-  
+
   google_fonts: ^0.3.2
-  provider: ^2.0.1+1
+  provider: ^4.0.1+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - graphics/default_album_cover.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

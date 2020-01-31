@@ -1,5 +1,6 @@
 
 class Track {
+  int id;
   String artist;
   String title;
   String albumCover;

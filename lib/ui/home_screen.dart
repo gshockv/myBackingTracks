@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: _onPageSelected,
     );
   }
-
+  
   _onPageSelected(int index) {
     setState(() {
       _selectedPageIndex = index;
@@ -112,6 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _onAddRecordClick() {
-    _pages[_selectedPageIndex].addRecord();
+    _pages[_selectedPageIndex].addRecord(context);
   }
 }

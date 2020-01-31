@@ -11,8 +11,8 @@ import 'ui/utils/app_colors.dart';
 void main() => runApp(
   MultiProvider(
     providers: [
-      ChangeNotifierProvider(builder: (context) => MyTracksProvider()),
-      ChangeNotifierProvider(builder: (context) => WishListProvider())
+      ChangeNotifierProvider(create: (context) => MyTracksProvider()),
+      ChangeNotifierProvider(create: (context) => WishListProvider())
     ],
     child: MyBackingTracksApp()
   )

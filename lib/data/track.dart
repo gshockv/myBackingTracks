@@ -5,6 +5,6 @@ class Track {
   String title;
   String albumCover;
 
-  Track({this.artist, this.title});
+  Track({this.id, this.artist, this.title, this.albumCover});
 
 }

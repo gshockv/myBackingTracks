@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mybackingtracks/data/backing_tracks_model.dart';
+import 'package:mybackingtracks/data/wishlist_model.dart';
 import 'package:provider/provider.dart';
-
-import 'package:mybackingtracks/data/provider/mytracks_provider.dart';
-import 'package:mybackingtracks/data/provider/wishlist_provider.dart';
 
 import 'ui/home_screen.dart';
 import 'ui/utils/app_colors.dart';
@@ -11,8 +10,8 @@ import 'ui/utils/app_colors.dart';
 void main() => runApp(
   MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (context) => MyTracksProvider()),
-      ChangeNotifierProvider(create: (context) => WishListProvider())
+      ChangeNotifierProvider(create: (context) => WishListModel()),
+      ChangeNotifierProvider(create: (context) => BakingTracksModel())
     ],
     child: MyBackingTracksApp()
   )

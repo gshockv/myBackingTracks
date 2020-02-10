@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/data/model/track.dart';
+import 'package:mybackingtracks/data/track.dart';
+import 'package:mybackingtracks/data/wishlist_model.dart';
 import 'package:mybackingtracks/ui/circle_asset_image.dart';
 import 'package:mybackingtracks/ui/utils/app_colors.dart';
 import 'package:mybackingtracks/ui/utils/ui_utils.dart';
+import 'package:provider/provider.dart';
 
 class EditWishTrackScreen extends StatefulWidget {
   final Track track;
@@ -23,6 +25,11 @@ class _EditWishTrackScreenState extends State<EditWishTrackScreen> {
   void initState() {
     super.initState();
     isEditExistingTrack = widget.track != null;
+
+    if (isEditExistingTrack) {
+      artistController.text = widget.track.artist;
+      trackController.text = widget.track.title;
+    }
   }
 
   @override
@@ -57,7 +64,7 @@ class _EditWishTrackScreenState extends State<EditWishTrackScreen> {
             Divider(
               color: Color(AppColors.hrColor),
             ),
-            _createSaveButton()
+            _createButtons()
           ],
         ),
       ));
@@ -79,8 +86,7 @@ class _EditWishTrackScreenState extends State<EditWishTrackScreen> {
                 decoration: InputDecoration(
                     labelText: "Artist",
                     labelStyle: TextStyle(color: Colors.deepOrange),
-                    hintText: "Artist"
-                ),
+                    hintText: "Artist"),
               ),
               TextField(
                 controller: trackController,
@@ -97,24 +103,93 @@ class _EditWishTrackScreenState extends State<EditWishTrackScreen> {
     );
   }
 
-  Widget _createSaveButton() {
-    return Align(
-      alignment: Alignment.bottomRight,
-      child: RaisedButton(
-        child: Text("Save"),
-        onPressed: _saveTrack,
-      ),
+  Widget _createButtons() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: isEditExistingTrack
+                ? Align(
+                    alignment: Alignment.bottomLeft,
+                    child: RaisedButton(
+                        color: Colors.red,
+                        child: Text("Delete"),
+                        onPressed: () { 
+                          _tryToRemoveTrack();
+                        }
+                    ),
+                  )
+                : Text("")),
+        Expanded(
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: RaisedButton(
+              child: Text("Save"),
+              onPressed: _saveTrack,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-  _saveTrack() {
+  _saveTrack() async {
     final String artist = artistController.text;
-    final String track = trackController.text;
+    final String title = trackController.text;
 
-    if (artist.isNotEmpty && track.isNotEmpty) {
-      print("Save Track [$artist : $track]");
+    final dataModel = Provider.of<WishListModel>(context, listen: false);
+
+    if (artist.isNotEmpty && title.isNotEmpty) {
+      print("Save Track [$artist : $title]");
+      if (isEditExistingTrack) {
+        final Track track = widget.track;
+        track.artist = artist;
+        track.title = title;
+
+        await dataModel.updateTrackInWishList(track);
+      } else {
+        final Track track = Track();
+        track.artist = artist;
+        track.title = title;
+
+        await dataModel.addTrackToWishList(track);
+      }
+
+      Navigator.pop(context);
     } else {
-      print("Track info fields are empty: [$artist : $track]");
+      print("Track info fields are empty: [$artist : $title]");
     }
+  }
+
+  _tryToRemoveTrack() {
+    final confirmAlert = AlertDialog(
+      title: Text("WishList"),
+      content: Text("Remove this track from Wish List?"),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          }, 
+          child: Text("CANCEL")
+        ),
+        FlatButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+            _removeTrack();
+          },
+          child: Text("REMOVE"),
+        )
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (context) {
+        return confirmAlert;
+      }
+    );
+  }
+
+  _removeTrack() async {
+    await Provider.of<WishListModel>(context, listen: false).removeTrackFromWishList(widget.track);
+    Navigator.pop(context);
   }
 }

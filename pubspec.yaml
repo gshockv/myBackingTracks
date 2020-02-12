@@ -24,6 +24,7 @@ flutter:
 
   assets:
     - graphics/default_album_cover.jpg
+    - graphics/backing_track_album_cover.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

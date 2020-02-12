@@ -1,6 +1,6 @@
 import 'package:mybackingtracks/data/db/db_provider.dart';
-import 'package:mybackingtracks/data/db/wish_list_dao.dart';
-import 'package:mybackingtracks/data/db/wish_list_repository.dart';
+import 'package:mybackingtracks/data/db/wishlist/wish_list_dao.dart';
+import 'package:mybackingtracks/data/db/wishlist/wish_list_repository.dart';
 import 'package:mybackingtracks/data/track.dart';
 
 class WishListDatabaseRepository implements WishListRepository {

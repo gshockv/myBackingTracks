@@ -1,6 +1,5 @@
+import 'package:mybackingtracks/data/db/dao.dart';
 import 'package:mybackingtracks/data/track.dart';
-
-import 'dao.dart';
 
 class WishListDao implements Dao<Track> {
   final tableName = "wish_tracks";

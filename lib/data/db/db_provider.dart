@@ -1,4 +1,4 @@
-import 'package:mybackingtracks/data/db/wish_list_dao.dart';
+import 'package:mybackingtracks/data/db/wishlist/wish_list_dao.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 

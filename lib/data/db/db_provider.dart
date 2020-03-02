@@ -1,3 +1,4 @@
+import 'package:mybackingtracks/data/db/backings/backing_tracks_dao.dart';
 import 'package:mybackingtracks/data/db/wishlist/wish_list_dao.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -27,7 +28,8 @@ class DatabaseProvider {
       version: _DB_VERSION,
 
       onCreate: (db, version) {
-        return db.execute(WishListDao().createTableQuery);
+          db.execute(WishListDao().createTableQuery);
+          db.execute(BackingTracksDao().createTableQuery);
       }
     );
   }

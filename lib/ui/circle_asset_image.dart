@@ -5,7 +5,12 @@ class CircleAssetImage extends StatelessWidget {
   final double width;
   final double height;
 
-  CircleAssetImage({Key key, @required this.imageAssetPath, this.width = 120.0, this.height = 120.0}) : super(key: key);
+  CircleAssetImage(
+      {Key key,
+      @required this.imageAssetPath,
+      this.width = 120.0,
+      this.height = 120.0})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

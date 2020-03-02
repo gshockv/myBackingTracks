@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:mybackingtracks/data/db/db_provider.dart';
-import 'package:mybackingtracks/data/track.dart';
+import 'package:mybackingtracks/data/model/track.dart';
 
 abstract class WishListRepository {
   DatabaseProvider databaseProvider;

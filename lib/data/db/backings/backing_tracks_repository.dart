@@ -1,12 +1,12 @@
-import 'package:mybackingtracks/data/backing_track.dart';
 import 'package:mybackingtracks/data/db/db_provider.dart';
+import 'package:mybackingtracks/data/model/backing_track.dart';
 
-abstract class BakingTracksRepository {
+abstract class BackingTracksRepository {
   DatabaseProvider databaseProvider;
 
   Future<BackingTrack> insert(BackingTrack track);
   Future<BackingTrack> update(BackingTrack track);
   Future<BackingTrack> delete(BackingTrack track);
 
-  Future<List<BackingTrack>> bakingsTracks();
+  Future<List<BackingTrack>> backingTracks();
 }

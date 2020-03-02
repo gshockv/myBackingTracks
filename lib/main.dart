@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mybackingtracks/data/backing_tracks_model.dart';
-import 'package:mybackingtracks/data/wishlist_model.dart';
+import 'package:mybackingtracks/data/model/backing_tracks_model.dart';
+import 'package:mybackingtracks/data/model/wishlist_model.dart';
 import 'package:provider/provider.dart';
 
 import 'ui/home_screen.dart';

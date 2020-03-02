@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/data/track.dart';
-import 'package:mybackingtracks/data/wishlist_model.dart';
+import 'package:mybackingtracks/data/model/track.dart';
+import 'package:mybackingtracks/data/model/wishlist_model.dart';
 import 'package:mybackingtracks/ui/circle_asset_image.dart';
 import 'package:mybackingtracks/ui/utils/app_colors.dart';
 import 'package:mybackingtracks/ui/utils/ui_utils.dart';

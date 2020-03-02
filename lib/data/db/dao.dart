@@ -1,5 +1,6 @@
 
 abstract class Dao<T> {
+  String get tableName;
   String get createTableQuery;
   
   T fromMap(Map<String, dynamic> query);

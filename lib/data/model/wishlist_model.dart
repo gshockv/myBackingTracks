@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:mybackingtracks/data/db/wishlist/wish_list_db_repository.dart';
 import 'package:mybackingtracks/data/db/wishlist/wish_list_repository.dart';
-import 'package:mybackingtracks/data/track.dart';
+import 'package:mybackingtracks/data/model/track.dart';
 
 class WishListModel extends ChangeNotifier {
   WishListRepository _repository;

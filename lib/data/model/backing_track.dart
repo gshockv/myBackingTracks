@@ -1,4 +1,5 @@
-import 'package:mybackingtracks/data/track.dart';
+
+import 'package:mybackingtracks/data/model/track.dart';
 
 class BackingTrack extends Track {
   String localFilePath;

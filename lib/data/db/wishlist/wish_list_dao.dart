@@ -1,12 +1,14 @@
 import 'package:mybackingtracks/data/db/dao.dart';
-import 'package:mybackingtracks/data/track.dart';
+import 'package:mybackingtracks/data/model/track.dart';
 
 class WishListDao implements Dao<Track> {
-  final tableName = "wish_tracks";
   final columnId = "id";
   final _columnArtist = "artist";
   final _columnTitle = "title";
   final _columnAlbumCover = "album_cover";
+
+  @override
+  String get tableName => "wish_tracks";
 
   @override
   String get createTableQuery => 

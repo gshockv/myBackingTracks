@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mybackingtracks/data/track.dart';
-import 'package:mybackingtracks/data/wishlist_model.dart';
+import 'package:mybackingtracks/data/model/track.dart';
+import 'package:mybackingtracks/data/model/wishlist_model.dart';
 import 'package:mybackingtracks/ui/add_record_mixin.dart';
 import 'package:mybackingtracks/ui/circle_asset_image.dart';
 import 'package:mybackingtracks/ui/wishlist/edit_wish_track_screen.dart';
@@ -23,9 +23,6 @@ class WishListScreen extends StatefulWidget with CanAddNewRecord {
 }
 
 class _WishListScreenState extends State<WishListScreen> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Consumer<WishListModel>(
@@ -37,7 +34,7 @@ class _WishListScreenState extends State<WishListScreen> {
               return _buildLoadingStateUi();
             }
             if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasData) {
+              if (snapshot.hasData && snapshot.data.length > 0) {
                 return _buildWishListView(snapshot);
               } else {
                 return _buildEmptyStateUi();
@@ -63,10 +60,7 @@ class _WishListScreenState extends State<WishListScreen> {
             height: 52,
           ),
           title: Text(track.title),
-          subtitle: Text(
-            track.artist
-          ),
-          
+          subtitle: Text(track.artist),
           onTap: () {
             _openTrackForEdit(track);
           },
